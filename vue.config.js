@@ -21,7 +21,7 @@ module.exports = {
   ], // 是否为生产环境构建生成sourceMap?
   productionSourceMap: false, // 调整内部的webpack配置. // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   devServer:{
-      port:8080,
+      port:8081,
       proxy:{
          '/apis':{
             target:'http://192.168.2.32/',
