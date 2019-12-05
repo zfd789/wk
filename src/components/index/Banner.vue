@@ -5,34 +5,7 @@
       <el-carousel height="550px">
         <el-carousel-item v-for="(item, index) in this.banner" :key="index">
           <div class="wid-w1240">
-            <!-- 菜单栏 -->
-            <ul class="menulist">
-              <!-- 遍历第一级菜单  鼠标放上去时 cur = index 子菜单显示 鼠标离开 cur==999 子菜单隐藏 -->
-              <li
-                v-for="(item, index) in menulist"
-                :key="index"
-                @mouseover="cur=index"
-                @mouseleave="cur=999"
-              >
-                ———— {{item.class_name}} ————
-                <div class="menu_item">
-                  <!-- 二级菜单 -->
-                  <p v-for="(children, index) in item.children" :key="index">{{children.class_name}}</p>
-                </div>
-                <!-- 子菜单 -->
-                <div class="catynavlist" v-show="cur==index">
-                  <div class="title" v-for="(children, index) in item.children" :key="index">
-                    {{children.class_name}}
-                    <div class="plain_menu_item">
-                      <p
-                        v-for="(children, index) in children.children"
-                        :key="index"
-                      >{{children.class_name}}</p>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
+       
             <div class="adv">
               <div class="avatar_wrap">
                 <img src="../../assets/images/home/banner0.jpg" alt />
@@ -80,10 +53,8 @@ export default {
   name: "Banner",
   data() {
     return {
-      menulist: [],
       banner: [],
       tabPosition: "left",
-      cur: 999
     };
   },
   methods: {
@@ -92,18 +63,11 @@ export default {
         this.banner = res.data[1].banners;
       });
     },
-    clsssList() {
-      API.classList().then(res => {
-        this.menulist = res.data;
-
-        console.log(res);
-      });
-    },
+   
     handleClick() {}
   },
   mounted() {
     this.bannerlist();
-    this.clsssList();
   }
 };
 </script>
@@ -115,70 +79,10 @@ export default {
   .wid-w1240 {
     position: relative;
 
-    .menulist {
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      background-color: #fff;
-      height: 550px;
-      width: 220px;
-      li {
-        height: 15%;
-        padding-top: 5%;
-
-        .menu_item {
-          position: relative;
-          display: flex;
-          justify-content: space-around;
-          // align-items: center;
-          flex-wrap: wrap;
-          p {
-            width: 55px;
-            padding: 5px;
-          }
-        }
-        .catynavlist {
-          position: absolute;
-          width: 500px;
-          height: 550px;
-          background-color: #fff;
-          top: 0px;
-          left: 220px;
-          padding: 20px;
-          .title {
-            color: #74e7eb;
-            text-align: left;
-            // height: 20px;
-            // line-height: 20px
-            // text-indent: 1em;
-            // background-color: yellow;
-            // height: 100%;
-            .plain_menu_item {
-              color: #333;
-              display: flex;
-              flex-wrap: wrap;
-              p {
-                height: 10px;
-                width: 85px;
-                padding: 8px;
-                flex-wrap: wrap;
-              }
-            }
-          }
-        }
-        .active {
-          display: none;
-        }
-      }
-      li:hover {
-        background-color: #ff9a3c;
-        display: block;
-        // color: #fff;
-      }
-    }
+  
     .adv {
       width: 310px;
-      height: 514px;
+      height: 500px;
       position: absolute;
       top: 0px;
       right: 0px;

@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <div class="wid-w1240">
+  <div class="wid-w1240 color_bac">
     <h1>优质供应商</h1>
     <div class="superlier_wrap">
       <div class="superlier">
@@ -22,36 +22,10 @@
             </div>
           </div>
           <div class="business_logo">
-            <img src="../../assets/images/home/business.jpg" alt="">
-            <img src="../../assets/images/home/business.jpg" alt="">
-            <img src="../../assets/images/home/business.jpg" alt="">
-            <img src="../../assets/images/home/business.jpg" alt="">
-          </div>
-        </div>
-      </div>
-    <div class="superlier">
-        <div class="superlier_left">
-          <h2>| 设计服务</h2>
-          <div>企业展厅、科技展厅,企业展厅、科技展厅,企业展厅、科技展厅</div>
-        </div>
-        <div class="superlier_right">
-          <h2>工业设计</h2>
-          <div class="content">
-            <img src="../../assets/images/home/banner0.jpg" alt />
-
-            <div>
-              <h3>工业设计-3套服务方案</h3>
-              <div class="business">
-                <h6>苏州**品牌设计有限公司</h6>
-                <p>竹有七德，“正直、奋进,竹有七德，“正直、奋进,竹有七德，“正直、奋进...</p>
-              </div>
-            </div>
-          </div>
-          <div class="business_logo">
-            <img src="../../assets/images/home/business.jpg" alt="">
-            <img src="../../assets/images/home/business.jpg" alt="">
-            <img src="../../assets/images/home/business.jpg" alt="">
-            <img src="../../assets/images/home/business.jpg" alt="">
+            <img src="../../assets/images/home/business.jpg" alt />
+            <img src="../../assets/images/home/business.jpg" alt />
+            <img src="../../assets/images/home/business.jpg" alt />
+            <img src="../../assets/images/home/business.jpg" alt />
           </div>
         </div>
       </div>
@@ -74,14 +48,14 @@
             </div>
           </div>
           <div class="business_logo">
-            <img src="../../assets/images/home/business.jpg" alt="">
-            <img src="../../assets/images/home/business.jpg" alt="">
-            <img src="../../assets/images/home/business.jpg" alt="">
-            <img src="../../assets/images/home/business.jpg" alt="">
+            <img src="../../assets/images/home/business.jpg" alt />
+            <img src="../../assets/images/home/business.jpg" alt />
+            <img src="../../assets/images/home/business.jpg" alt />
+            <img src="../../assets/images/home/business.jpg" alt />
           </div>
         </div>
       </div>
-     <div class="superlier">
+      <div class="superlier">
         <div class="superlier_left">
           <h2>| 设计服务</h2>
           <div>企业展厅、科技展厅,企业展厅、科技展厅,企业展厅、科技展厅</div>
@@ -100,10 +74,36 @@
             </div>
           </div>
           <div class="business_logo">
-            <img src="../../assets/images/home/business.jpg" alt="">
-            <img src="../../assets/images/home/business.jpg" alt="">
-            <img src="../../assets/images/home/business.jpg" alt="">
-            <img src="../../assets/images/home/business.jpg" alt="">
+            <img src="../../assets/images/home/business.jpg" alt />
+            <img src="../../assets/images/home/business.jpg" alt />
+            <img src="../../assets/images/home/business.jpg" alt />
+            <img src="../../assets/images/home/business.jpg" alt />
+          </div>
+        </div>
+      </div>
+      <div class="superlier">
+        <div class="superlier_left">
+          <h2>| 设计服务</h2>
+          <div>企业展厅、科技展厅,企业展厅、科技展厅,企业展厅、科技展厅</div>
+        </div>
+        <div class="superlier_right">
+          <h2>工业设计</h2>
+          <div class="content">
+            <img src="../../assets/images/home/banner0.jpg" alt />
+
+            <div>
+              <h3>工业设计-3套服务方案</h3>
+              <div class="business">
+                <h6>苏州**品牌设计有限公司</h6>
+                <p>竹有七德，“正直、奋进,竹有七德，“正直、奋进,竹有七德，“正直、奋进...</p>
+              </div>
+            </div>
+          </div>
+          <div class="business_logo">
+            <img src="../../assets/images/home/business.jpg" alt />
+            <img src="../../assets/images/home/business.jpg" alt />
+            <img src="../../assets/images/home/business.jpg" alt />
+            <img src="../../assets/images/home/business.jpg" alt />
           </div>
         </div>
       </div>
@@ -122,11 +122,12 @@ export default {
 <style lang='scss' scoped>
 .superlier_wrap {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
   .superlier {
     display: flex;
     height: 380px;
+    margin: 1px ;
     .superlier_left {
       width: 160px;
       height: 380px;
@@ -148,6 +149,7 @@ export default {
     .superlier_right {
       width: 430px;
       text-align: left;
+      background: #f9f9f9;
       h2 {
         height: 50px;
         line-height: 50px;

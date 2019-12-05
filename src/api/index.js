@@ -1,7 +1,7 @@
 import axios from 'axios'
 // import router from '../router'
 import qs from 'qs'
-
+axios.defaults.withCredentials=true
 const base = 'http://192.168.2.32/'
 
 export const POST = (url, params) => {

@@ -3,24 +3,22 @@
   <div>
     <!-- 顶部fixd -->
     <Topfixd></Topfixd>
-    <a href="http://zt.epwk.com/1910chengxin/">
-      <img src="../../assets/images/home/top.jpg" alt />
-    </a>
+    <div style="height:20px"></div>
     <Nav></Nav>
-    <Menu></Menu>
+    <!-- <Menu></Menu> -->
   </div>
 </template>
 
 <script>
 import Topfixd from "@/components/index/Topfixd";
 import Nav from "@/components/index/Nav";
-import Menu from '@/components/index/menu'
+// import Menu from '@/components/index/menu'
 export default {
   name: "Header",
   components: {
     Topfixd,
     Nav,
-    Menu
+    // Menu
   },
   data() {
     return {};

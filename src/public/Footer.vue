@@ -130,7 +130,8 @@ export default {
   .wrap {
     display: flex;
     margin: 0 auto;
-    width: 1240px;
+    // width: 1240px;
+    width: 80%;
     margin: 0 auto;
     justify-content: space-between;
     h1 {

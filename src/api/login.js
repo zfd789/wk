@@ -5,5 +5,21 @@ export default {
     },
     register: params => {
         return API.POST('api/register', params)
+    },
+    // api/captcha
+    captcha: params => {
+        return API.GET('api/captcha', params)
+    },
+    // api/sendCode
+    sendCode: params => {
+        return API.POST('api/sendCode', params)
+    },
+    // 找回密码发送验证码
+    forget: params => {
+        return API.POST('api/forget', params)
+    },
+    // 修改密码
+    resetPwd: params => {
+        return API.POST('api/retrieve_pass', params)
     }
 }

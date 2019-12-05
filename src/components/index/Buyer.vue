@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <div class="wid-w1240">
+  <div class="wid-w1240 color_bac">
     <h1>优质供应商</h1>
     <div class="buyer">
       <div class="buyer_left">
@@ -14,26 +14,43 @@
         </div>
         <div class="content_wrap">
           <div class="content" v-for="(item,index) in buyerList" :key="index">
-            <dl>
-              <dt>
-                <h3>展厅服务的需求</h3>
-                <p>查看更多></p>
-              </dt>
-              <!-- <dt>
-                <div>
-                  <span>￥1000</span>
-                  <span>logo设计征集</span>
-                </div>
-                <div>
-                  <span>5</span>
-                  <span>人报价</span>
-                </div>
-              </dt> -->
-            </dl>
+            <div>
+              <h2>{{item.title}}</h2>
+              <p v-for="(tern,index ) in item.chilren" :key="index">
+                <span>￥{{tern.price}}</span>
+                {{tern.label}}
+              </p>
+            </div>
+            <div>查看更多></div>
           </div>
         </div>
       </div>
-      <div class="buyer_right"></div>
+      <div class="buyer_right">
+        <img src="../../assets/images/biao.jpg" alt />
+        <vue-seamless-scroll :data="listData" class="seamless-warp">
+          <ul class="item">
+            <li v-for="(item,index) in listData" :key="index" class="hot">
+              <img src="../../assets/images/avtar.jpg" alt />
+              <div class="business">
+               
+                <p>
+                 <span class="price"> ￥{{item.price}}</span>
+                  <span>{{item.type}}</span>
+                </p>
+                 <p class="title">
+                  {{item.title}}
+                  <span>成功中标了</span>
+                </p>
+              </div>
+            </li>
+          </ul>
+        </vue-seamless-scroll>
+      </div>
+    </div>
+    <div class="advert">
+      <img src="../../assets/images/sjs.png" alt="">
+      <img src="../../assets/images/sjs.png" alt="">
+      <img src="../../assets/images/sjs.png" alt="">
     </div>
   </div>
 </template>
@@ -43,15 +60,86 @@ export default {
   name: "Buyer",
   data() {
     return {
-      buyerList: []
+      buyerList: [],
+      listData: []
     };
   },
+  methods: {},
   mounted() {
+    this.listData = [
+      {
+        avater:
+          "http://192.168.2.32/uploads/avater/20191205/fd0d5e930a783c62726077e25aae159b.jpg",
+        title: "上海***文化公司",
+        price: "12000",
+        type: "企业小程序"
+      },
+      {
+        avater:
+          "http://192.168.2.32/uploads/avater/20191205/fd0d5e930a783c62726077e25aae159b.jpg",
+        title: "上海***文化公司",
+        price: "12000",
+
+        type: "展厅设计"
+      },
+      {
+        avater:
+          "http://192.168.2.32/uploads/avater/20191205/fd0d5e930a783c62726077e25aae159b.jpg",
+
+        title: "苏州***文化公司",
+        price: "12000",
+
+        type: "展厅设计"
+      },
+      {
+        avater:
+          "http://192.168.2.32/uploads/avater/20191205/fd0d5e930a783c62726077e25aae159b.jpg",
+        price: "12000",
+
+        title: "淮安***文化公司",
+        type: "展厅设计"
+      },
+      {
+        avater:
+          "http://192.168.2.32/uploads/avater/20191205/fd0d5e930a783c62726077e25aae159b.jpg",
+        price: "12000",
+
+        title: "北京***文化公司",
+        type: "展厅设计"
+      },
+      {
+        avater:
+          "http://192.168.2.32/uploads/avater/20191205/fd0d5e930a783c62726077e25aae159b.jpg",
+        price: "12000",
+
+        title: "广东***文化公司",
+        type: "展厅设计"
+      },
+      {
+        avater:
+          "http://192.168.2.32/uploads/avater/20191205/fd0d5e930a783c62726077e25aae159b.jpg",
+        price: "12000",
+
+        title: "无锡***文化公司",
+        type: "展厅设计"
+      }
+    ];
+
     this.buyerList = [
       {
         id: 1,
         title: "展厅服务的需求",
         chilren: [
+          {
+            price: "1000",
+            label: "logo设计征集",
+            num: "5"
+          },
+          {
+            price: "1000",
+            label: "logo设计征集",
+            num: "5"
+          },
           {
             price: "1000",
             label: "logo设计征集",
@@ -67,6 +155,16 @@ export default {
             price: "1000",
             label: "logo设计征集",
             num: "5"
+          },
+          {
+            price: "1000",
+            label: "logo设计征集",
+            num: "5"
+          },
+          {
+            price: "1000",
+            label: "logo设计征集",
+            num: "5"
           }
         ]
       },
@@ -74,6 +172,16 @@ export default {
         id: 3,
         title: "软件定制的需求",
         chilren: [
+          {
+            price: "1000",
+            label: "logo设计征集",
+            num: "5"
+          },
+          {
+            price: "1000",
+            label: "logo设计征集",
+            num: "5"
+          },
           {
             price: "1000",
             label: "logo设计征集",
@@ -97,7 +205,16 @@ export default {
         title: "平面设计的需求",
         chilren: [
           {
-            id: 11,
+            price: "1000",
+            label: "logo设计征集",
+            num: "5"
+          },
+          {
+            price: "1000",
+            label: "logo设计征集",
+            num: "5"
+          },
+          {
             price: "1000",
             label: "logo设计征集",
             num: "5"
@@ -121,10 +238,11 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
+
 .buyer {
   display: flex;
   height: 700px;
-
+  justify-content: space-between;
   .buyer_left {
     width: 790px;
     .content_wrap {
@@ -132,19 +250,61 @@ export default {
       flex-wrap: wrap;
 
       .content {
-        //  width: 395px;
-        width: 393px;
-        height: 183px;
+        width: 355px;
+        // width: 45%;
+        // height: 183px;
         border: 1px solid #dddddd;
-        dt {
-          display: flex;
-          justify-content: space-between;
+        // border-bottom:1px solid #dddddd;
+        // border-left: 1px solid #ddd;
+        display: flex;
+        justify-content: space-between;
+        //  margin: 10px;
+        padding: 18px;
+        text-align: left;
+        font-size: 14px;
+        background: #fff;
+        p {
+          height: 40px;
+          line-height: 40px;
+       
+        }
+        span {
+          color: #f42424;
         }
       }
     }
   }
   .buyer_right {
     width: 380px;
+    background: #fff;
+    .seamless-warp {
+      height: 569px;
+      overflow: hidden;
+      .hot {
+        display: flex;
+        margin: 20px;
+        .business {
+          text-align: left;
+          .title{
+            font-size: 14px;
+            font-weight: bold;
+          }
+          p {
+            height: 40px;
+            line-height: 40px;
+            .price{
+              color: #f42424;
+              font-size: 14px;
+
+            }
+               span{
+            font-weight: normal;
+            color: #99a9bf;
+          }
+          }
+        }
+      }
+    }
   }
   .el-carousel__item:nth-child(2n) {
     background-color: #99a9bf;
@@ -152,6 +312,14 @@ export default {
 
   .el-carousel__item:nth-child(2n + 1) {
     background-color: #d3dce6;
+  }
+}
+.advert{
+  display: flex;
+  justify-content: space-between;
+  img{
+    display: block;
+    width: 32%;
   }
 }
 </style>
