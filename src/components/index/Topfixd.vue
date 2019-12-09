@@ -63,6 +63,7 @@
 </template>
 
 <script>
+import API from '@/api/login'
 export default {
   name: "Topfixd",
   data() {
@@ -82,8 +83,8 @@ export default {
   left: 0px;
   z-index: 9999;
   .topfixd-contan {
-    // width: 1240px;
-    width: 80%;
+    width: 1240px;
+    // width: 80%;
     display: flex;
     margin: 0 auto;
     line-height: 40px;
@@ -103,6 +104,10 @@ export default {
       width: 50%;
       display: flex;
       justify-content: space-between;
+      a:hover{
+                color:  rgb(255, 154, 60);
+
+      }
        .color_ju{
         color:  rgb(255, 154, 60);
        }

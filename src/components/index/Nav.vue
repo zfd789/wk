@@ -7,7 +7,7 @@
           <img src="../../assets/images/home/logo.png" alt class="logo_index" />
         </router-link>
       </div>
-      <div class="topfixd-contan-r">
+      <div class="topfixd-contan-r" style="width:60%;">
         <div class="search-wrap">
           <div class="search-input">
             <!-- <img src="../../assets/images/home/search.svg" alt />
@@ -58,6 +58,11 @@ export default {
 <style lang='scss'>
 .search_bac {
   background-color: rgba(239, 199, 19, 1);
+  // background: #f95959;
+}
+.topfixd-contan{
+  display: flex;
+  justify-content: space-between;
 }
 .logo_index{
   padding: 35px 0;
@@ -71,6 +76,9 @@ export default {
   width: 100%;
   margin: 0 auto;
   margin-top: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  // background: pink;
   .search-input {
     display: flex;
     width: 480px;
@@ -139,6 +147,7 @@ export default {
     background: #f95959;
     color: #fff;
     cursor: pointer;
+    margin-right: 150px;
   }
 }
 .hot {

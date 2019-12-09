@@ -36,8 +36,8 @@ export default {
   width: 100%;
   background: #333;
   .menu-con {
-    // width: 1240px;
-    width: 80%;
+    width: 1240px;
+    // width: 80%;
     display: flex;
     margin: 0 auto;
     font-size: 16px;

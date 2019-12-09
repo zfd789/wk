@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <div class="wid-w1240">
+  <div class="wid-w1240 color_bac">
     <div class="container">
       <div class="container_l">
         <div class="brand_wrap">
@@ -20,10 +20,10 @@
           </div>
         </div>
         <div class="brand_wrap">
-          <div class="lable">
+          <div class="lable brandlist">
             <h3>品牌:</h3>
           </div>
-          <div class="brand">
+          <div class="brand brandlist">
             <Brand @Brandid="getBrandid" />
           </div>
         </div>
@@ -121,13 +121,13 @@ export default {
       });
     },
     province_id(id) {
-      console.log(id);
+      // console.log(id);
     },
     handleCurrentChange(page) {
       this.Goodslist();
     },
     getBrandid(id) {
-      console.log(99);
+      // console.log(99);
       this.brand_id = id;
       this.Goodslist();
     },
@@ -180,31 +180,41 @@ export default {
 .container {
   display: flex;
   justify-content: space-between;
+  margin: 20px 0px;
+  // background:yellow;
   .container_l {
-    width: 80%;
+    // width: 80%;
     .brand_wrap {
       display: flex;
       align-items: center;
-      margin: 10px;
+      margin: 1px;
       .lable {
         width: 107px;
-        //  background: #f8f8f8;
-        height: 100%;
+        background: #f8f8f8;
+        height: 70px;
+        line-height: 70px;
         h3 {
           width: 107px;
           font-size: 16px;
           //  background: #f8f8f8;
         }
       }
-      .brand{
+      .brand {
         display: flex;
-        p{
-          height: 40px;
-          line-height: 40px;
+        background: #fff;
+        width: 86%;
+        height: 70px;
+        line-height: 70px;
+        p {
+          height: 70px;
+          line-height: 70px;
           font-size: 16px;
-          margin: 0px 10px ;
+          margin: 0px 10px;
         }
-
+      }
+      .brandlist {
+        height: 140px;
+        line-height: 140px;
       }
       .list {
         span {

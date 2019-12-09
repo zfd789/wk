@@ -1,5 +1,8 @@
 import * as API from '.'
 export default {
+    islogin:params=>{
+        return API.GET('api/is_login',params)
+    },
     login: params => {
         return API.POST('api/login', params)
     },

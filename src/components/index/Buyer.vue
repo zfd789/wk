@@ -253,7 +253,7 @@ export default {
         width: 355px;
         // width: 45%;
         // height: 183px;
-        border: 1px solid #dddddd;
+        border: 1px solid #f2f2f2;
         // border-bottom:1px solid #dddddd;
         // border-left: 1px solid #ddd;
         display: flex;

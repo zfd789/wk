@@ -90,8 +90,9 @@ export default {
   methods: {
     // 区 去询价
     toOrder(){
+      console.log('----------------')
       this.$router.push({
-        path:'/Shopslist/order',
+        path:'/Shopslist/enquiry',
         query:{id:this.good_id}
       })
     },
@@ -159,7 +160,7 @@ export default {
         display: block;
         width: 77px;
         margin: 10px;
-        border: 1px solid #ccc;
+    border: 1px solid #f2f2f2;
       }
     }
   }

@@ -105,8 +105,8 @@ export default {
   width: 100%;
   background: #333;
   .menu-con {
-    // width: 1240px;
-    width: 80%;
+    width: 1240px;
+    // width: 80%;
     display: flex;
     margin: 0 auto;
     font-size: 16px;
@@ -116,7 +116,8 @@ export default {
     .left {
       width: 220px;
       position: relative;
-      background: #ff9a3c;
+      // background: #ff9a3c;
+      background: #5b5b5b;
       position: relative;
 
 
@@ -172,7 +173,8 @@ export default {
           }
         }
         li:hover {
-          background-color: #ff9a3c;
+          // background-color: #ff9a3c;
+          background:rgba(244, 215, 138, 1); ;
           display: block;
           // color: #fff;
         }
@@ -195,7 +197,8 @@ export default {
         padding: 0px 10px 0px;
       }
       a:hover {
-        background: #ff9a3c;
+        // background: #ff9a3c;
+         background: #5b5b5b;
       }
     }
   }

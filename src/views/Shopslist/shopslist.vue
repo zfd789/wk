@@ -243,7 +243,7 @@ export default {
         width: 100%;
         height: 70px;
         align-items: center;
-        border-bottom: rgba(244, 244, 244, 1);
+        border-bottom:#f2f2f2;
         // line-height: 100px;
         p {
           height: 40px;

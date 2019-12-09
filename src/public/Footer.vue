@@ -143,7 +143,8 @@ export default {
       height: 30px;
       line-height: 30px;
       margin: 20px 0px 10px;
-      border-bottom: 1px solid rgb(143, 140, 140);
+      border-bottom: 1px solid#f2f2f2;
+
     }
     a {
       color: #999;
