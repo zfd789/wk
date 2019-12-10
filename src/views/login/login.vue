@@ -288,9 +288,11 @@ export default {
           message: res.msg
         });
         if (this.logintype == 1) {
+          // localStorage.setItem('ISLogin',JSON.stringify)
           this.$router.push({
             path:'/'
           })
+
         } else {
           this.logintabs(res);
         }

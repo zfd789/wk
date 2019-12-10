@@ -90,4 +90,7 @@ export default {
     margin: 10px;
   }
 }
+.color{
+  color: red;
+}
 </style>

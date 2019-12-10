@@ -26,10 +26,14 @@ import enquiry from '@/views/Shopslist/enquiry'
 import success from '@/views/Shopslist/success'
 Vue.use(VueRouter)
 
-const routes = [{
+const routes = [
+  {
     path: '/',
     name: 'index',
     component: index,
+    meta: {
+      requireAuth: false
+    },
     children: [{
         path: '/Home',
         component: Home,
@@ -46,10 +50,48 @@ const routes = [{
     path: '/',
     name: 'index',
     component: index,
+    meta: {
+      requireAuth: false
+    },
+    children: [{
+        path: '/menu/publish',
+        // component: publish,
+        component: () => import('@/views/menu/publish'),
+        name: "发布"
+      },
+      {
+        path: '/menu/orderTaking',
+        // component: orderTaking,
+        component: () => import('@/views/menu/orderTaking'),
+        name: "我要接单"
+      }
+      // ,
+      // {
+      //   path: '/',
+      //   redirect: '/Forum/forum'
+      // }
+    ],
+
+  },
+  {
+    path: '/',
+    name: 'index',
+    component: index,
+    meta: {
+      requireAuth: false
+    },
+    // publishQuestions
     children: [{
         path: '/Forum/forum',
-        component: forum,
+        // component: forum,
+        component: () => import('@/views/Forum/forum'),
         name: "社区"
+      },
+      {
+        path: '/Forum/publishQuestions',
+        // component: forum,
+        component: () => import('@/views/Forum/publishQuestions'),
+        name: "发布问题"
       },
       {
         path: '/',
@@ -62,6 +104,9 @@ const routes = [{
     path: '/',
     name: 'index',
     component: index,
+    meta: {
+      requireAuth: false
+    },
     children: [{
         path: '/Shopslist/shopslist',
         component: shopslist,
@@ -80,12 +125,18 @@ const routes = [{
       {
         path: '/Shopslist/order',
         component: order,
-        name: "发布需求"
+        name: "发布需求",
+            meta:{
+          requireAuth: true
+        }
       },
       {
         path: '/Shopslist/enquiry',
         component: enquiry,
-        name: "询价订单"
+        name: "询价订单",
+        meta:{
+          requireAuth: true
+        }
       },
       {
         path: '/Shopslist/success',
@@ -104,6 +155,9 @@ const routes = [{
     path: '/',
     name: 'Shop',
     component: Shop,
+    meta: {
+      requireAuth: true
+    },
     children: [{
         path: '/Shop/home',
         component: home,
@@ -120,6 +174,9 @@ const routes = [{
     path: '/',
     name: 'Costomer',
     component: Costomer,
+    meta: {
+      requireAuth: true
+    },
     children: [{
         path: '/Customer/customer',
         component: customer,
@@ -256,5 +313,7 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+ 
+
 
 export default router

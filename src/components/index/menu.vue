@@ -36,8 +36,8 @@
         </ul>
       </div>
       <div class="midle">
-        <router-link to="/Shopslist/order">我要发布</router-link>
-        <a href="#">我要接单</a>
+        <p @click="topublish">我要发布</p>
+        <p @click="ordertaking">我要接单</p>
         <a href="#">凌灵优选</a>
         <a href="#">展厅服务</a>
         <a href="#">资质认证</a>
@@ -64,22 +64,33 @@ export default {
     };
   },
   methods: {
-    toshop(children,children_1) {
-      
+    topublish() {
+      console.log('-------------11111111111111----------')
+     this.$router.push({
+          path: "/menu/publish"
+        });
+    },
+      ordertaking() {
+      console.log('-------------11111111111111----------')
+     this.$router.push({
+          path: "/menu/orderTaking"
+        });
+    },
+    toshop(children, children_1) {
       //  localStorage.setItem("menuList",JSON.stringify(children.children));
       // 1是硬件 goods 2 是软件 shop
       this.class_type = children_1.class_type;
       // console.log( this.class_type)
       //  console.log( children_1)
       if (this.class_type === 1) {
-         this.$router.replace({
+        this.$router.replace({
           path: "/Shopslist/Goodslist",
-          query: { id: children_1.id,list: children.children}
+          query: { id: children_1.id, list: children.children }
         });
       } else if (this.class_type === 2) {
         this.$router.replace({
           path: "/Shopslist/shopslist",
-          query: { info: children_1,list: children.children }
+          query: { info: children_1, list: children.children }
         });
       }
     },
@@ -119,7 +130,6 @@ export default {
       // background: #ff9a3c;
       background: #5b5b5b;
       position: relative;
-
 
       .menulist {
         position: absolute;
@@ -174,7 +184,7 @@ export default {
         }
         li:hover {
           // background-color: #ff9a3c;
-          background:rgba(244, 215, 138, 1); ;
+          background: rgba(244, 215, 138, 1);
           display: block;
           // color: #fff;
         }
@@ -198,7 +208,7 @@ export default {
       }
       a:hover {
         // background: #ff9a3c;
-         background: #5b5b5b;
+        background: #5b5b5b;
       }
     }
   }

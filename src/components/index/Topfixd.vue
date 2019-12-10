@@ -68,6 +68,26 @@ export default {
   name: "Topfixd",
   data() {
     return {};
+  },
+  methods:{
+    islogin(){
+      API.islogin().then(res=>{
+        if(res.code==0){
+          // 已登录
+          console.log(res)
+          localStorage.setItem('islogin',0)
+        } else {
+          // 未登录
+          console.log(res)
+           localStorage.setItem('islogin',1)
+        }
+      })
+    },
+
+  },
+  mounted(){
+    this.islogin()
+    // to.matched.some(res => res.meta.requireAuth) 
   }
 };
 </script>
