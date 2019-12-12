@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <div>mineOrder</div>
+  <div>我的报价单详情</div>
 </template>
 
 <script>

@@ -33,7 +33,7 @@
                   </div>
                   <div>
                     <span>回答问题可得2级分</span>
-                    <el-button>我要回答</el-button>
+                    <el-button @click="anser">我要回答</el-button>
                   </div>
                 </div>
               </div>
@@ -59,11 +59,16 @@ export default {
         "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
     };
   },
-  methods:{
-    publishQ(){
+  methods: {
+    anser() {
       this.$router.push({
-        path:"/Forum/publishQuestions"
-      })
+        path: "/Forum/anser"
+      });
+    },
+    publishQ() {
+      this.$router.push({
+        path: "/Forum/publishQuestions"
+      });
     }
   }
 };
@@ -81,9 +86,9 @@ export default {
       height: 88px;
       background: url("../../assets/images/search_bac.jpgu42.jpg");
       margin: 20px 0px;
-      .el-button{
-       height: 52px;
-       width: 120px;
+      .el-button {
+        height: 52px;
+        width: 120px;
       }
       .search_wrap {
         width: 600px;
@@ -91,7 +96,7 @@ export default {
         .el-input-group__prepend {
           background: #f95959;
           color: #fff;
-           
+
           outline: none;
         }
         .el-input__inner {

@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import API from '@/api/customer'
+
 export default {
   data() {
     return {
@@ -29,6 +31,19 @@ export default {
       formData:{}
 
     };
+  },
+  methods:{
+    save(){
+      API
+    },
+   shopInfo(){
+     API.myShopBaseInfo().then(res=>{
+       console.log(res)
+     })
+   }
+  },
+  mounted(){
+    this.shopInfo()
   }
 };
 </script>

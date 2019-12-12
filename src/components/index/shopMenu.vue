@@ -4,10 +4,10 @@
     <div class="menu-con">
 
       <div class="midle">
-        <a href="#">首页</a>
-        <a href="#">案例展示</a>
-        <a href="#">产品中心</a>
-        <a href="#">关于我们</a>
+        <router-link to="/Shop/home">首页</router-link>
+        <router-link to="/Shop/cases">案例展示</router-link>
+        <router-link to="/Shop/goodsCenter">产品中心</router-link>
+        <router-link to="/Shop/aboutUs">关于我们</router-link>
       </div>
 
     </div>

@@ -6,6 +6,9 @@ export default {
     login: params => {
         return API.POST('api/login', params)
     },
+    loginOut:params=>{
+         return API.GET('api/loginout',params)
+    },
     register: params => {
         return API.POST('api/register', params)
     },

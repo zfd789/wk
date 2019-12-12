@@ -42,6 +42,8 @@
 </template>
 
 <script>
+import API from '@/api/customer'
+
 export default {
   data() {
     return {
@@ -74,7 +76,11 @@ export default {
   },
   methods: {
     goodsList() {},
-    addGoods() {}
+    addGoods() {
+      this.$router.push({
+        path:"/Customer/mineshops/addCase"
+      })
+    }
   }
 };
 </script>

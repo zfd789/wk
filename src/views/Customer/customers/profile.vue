@@ -4,10 +4,10 @@
     <div class="wrap">
       <div class="info">
         <p>
-          <img src="../../../assets/images/sjspic.jpg" alt />
+          <el-avatar shape="square" :size="180" :src="circleUrl"></el-avatar>
         </p>
         <div class="info_name">
-          <h2>花花</h2>
+          <h2>{{UserInfo.name}}</h2>
           <ul>
             <li>实名</li>
             <li>手机</li>
@@ -21,7 +21,8 @@
         </p>
 
         <div class="signed">
-          <el-button type="danger" style="width:140px;">签到</el-button>
+          <el-button type="danger" style="width:140px;" @click="sign" v-show="issign">签到</el-button>
+          <el-button type="info" style="width:140px;" disabled v-show="!issign">已签到</el-button>
           <p class="c_ccc">签到可领取10级分</p>
         </div>
       </div>
@@ -72,13 +73,31 @@
 </template>
 
 <script>
+import API from "@/api/customer";
 export default {
   data() {
     return {
+      issign:true,
+      UserInfo:{},
+      circleUrl:
+        "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
       caselist: []
     };
   },
+  methods: {
+    // sign
+    sign(){
+     this.issign = false
+    },
+    getUserInfo() {
+      API.UserInfo().then(res => {
+        this.UserInfo = res.data
+        console.log(res);
+      });
+    }
+  },
   mounted() {
+    this.getUserInfo();
     this.caselist = [
       {
         pic:
@@ -199,7 +218,7 @@ export default {
   }
   .sign {
     text-align: right;
-  
+
     .signed {
       margin-top: 100px;
       p {

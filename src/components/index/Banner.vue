@@ -8,13 +8,12 @@
        
             <div class="adv">
               <div class="avatar_wrap">
-                <img src="../../assets/images/home/banner0.jpg" alt />
+                <!-- <img src="../../assets/images/home/banner0.jpg" alt /> -->
+                <el-avatar :size="50" :src="circleUrl"></el-avatar>
                 <div>
                   <p>hi, 欢迎来到凌灵威客</p>
-                  <p>
-                    <router-link to="/login">登录</router-link>
-                    <span>/</span>
-                    <router-link to="/register">注册</router-link>
+                  <p @click="tologin">
+                    {{username || '登录/注册'}}
                   </p>
                 </div>
               </div>
@@ -22,11 +21,11 @@
                 <p>我要入驻</p>
                 <p>新人福利</p>
               </div>
-              <div class="block">
+              <div class="block record">
                 <el-carousel height="135px" indicator-position="outside" arrow="never">
-                  <el-carousel-item v-for="item in 4" :key="item">
-                    <h1>{{ item }}</h1>
-                    <p>总交易量</p>
+                  <el-carousel-item v-for="item in recordlist" :key="item.id">
+                    <h1>{{ item.value }}</h1>
+                    <p>{{item.title}}</p>
                   </el-carousel-item>
                 </el-carousel>
               </div>
@@ -54,10 +53,32 @@ export default {
   data() {
     return {
       banner: [],
+      recordlist:[],
+      circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
       tabPosition: "left",
+      username:""
     };
   },
   methods: {
+    record(){
+         API.record().then(res=>{
+           this.recordlist = res.data.record
+           console.log(res)
+         })
+    },
+    tologin(){
+         if (this.username) {
+        this.$message({
+          message: '您已登录',
+          offset:50,
+          type: 'warning'
+        });
+      } else {
+        this.$router.push({
+          path: "/login"
+        });
+      }
+    },
     bannerlist() {
       API.bannerlist().then(res => {
         this.banner = res.data[1].banners;
@@ -68,6 +89,9 @@ export default {
   },
   mounted() {
     this.bannerlist();
+    this.record()
+        this.username = JSON.parse(localStorage.getItem("username"));
+
   }
 };
 </script>
@@ -89,21 +113,17 @@ export default {
       background-color: #fff;
       margin-top: 18px;
       padding: 10px 20px 10px;
-
+      font-size: 14px;
       .avatar_wrap {
         display: flex;
-        img {
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
-        }
+        margin: 10px 0px;
         p {
-          height: 30px;
-          // line-height: 20px;;
+          margin: 2px 10px;
         }
       }
       .live_wrap {
         display: flex;
+        align-items: center;
         p {
           width: 112px;
           height: 35px;
@@ -113,10 +133,10 @@ export default {
           color: #fff;
           line-height: 35px;
           margin: 10px 0px 10px 10px;
+          text-align: center;
         }
       }
-      // .num_wrap {
-      // }
+
       .el-tabs__nav-wrap::after {
         background-color: #fff;
       }
@@ -127,13 +147,14 @@ export default {
     height: 550px;
     width: 100%;
   }
-  .el-carousel__item h1 {
-    height: 90px;
-    line-height: 90px;
+  .el-carousel__item  {
+    text-align: center;
+    border-top: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
   }
 
   .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
+    background-color: #e4e4e1;
   }
 
   .el-carousel__item:nth-child(2n + 1) {

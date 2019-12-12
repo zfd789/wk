@@ -1,14 +1,13 @@
 <!--  -->
 <template>
   <div class="wid-w1240 color_bac">
-    <h1>优质供应商</h1>
+    <h1>优质采购商</h1>
     <div class="buyer">
       <div class="buyer_left">
         <div class="block">
           <el-carousel height="120px" indicator-position="none" arrow="never">
-            <el-carousel-item v-for="item in 4" :key="item">
-              <h1>{{ item }}</h1>
-              <!-- <img src="../../assets/images/home/banner0.jpg" alt=""> -->
+            <el-carousel-item v-for="(item,index) in buyerpic" :key="index">
+              <img :src="item.pic" alt="">
             </el-carousel-item>
           </el-carousel>
         </div>
@@ -21,7 +20,7 @@
                 {{tern.label}}
               </p>
             </div>
-            <div>查看更多></div>
+            <div @click="ordertaking">查看更多></div>
           </div>
         </div>
       </div>
@@ -56,16 +55,31 @@
 </template>
 
 <script>
+import API from "../../api/home";
 export default {
   name: "Buyer",
   data() {
     return {
       buyerList: [],
-      listData: []
+      listData: [],
+      buyerpic:[]
     };
   },
-  methods: {},
+  methods: {
+    buyerLists(){
+      API.record().then(res=>{
+        // this.buyerList = res.data.high_supplier
+        console.log(res)
+      })
+    },
+    ordertaking(){
+      this.$router.push({
+        path:"/menu/orderTaking"
+      })
+    }
+  },
   mounted() {
+    this.buyerLists()
     this.listData = [
       {
         avater:
@@ -107,24 +121,32 @@ export default {
         title: "北京***文化公司",
         type: "展厅设计"
       },
-      {
-        avater:
-          "http://192.168.2.32/uploads/avater/20191205/fd0d5e930a783c62726077e25aae159b.jpg",
-        price: "12000",
+      // {
+      //   avater:
+      //     "http://192.168.2.32/uploads/avater/20191205/fd0d5e930a783c62726077e25aae159b.jpg",
+      //   price: "12000",
 
-        title: "广东***文化公司",
-        type: "展厅设计"
-      },
-      {
-        avater:
-          "http://192.168.2.32/uploads/avater/20191205/fd0d5e930a783c62726077e25aae159b.jpg",
-        price: "12000",
+      //   title: "广东***文化公司",
+      //   type: "展厅设计"
+      // },
+      // {
+      //   avater:
+      //     "http://192.168.2.32/uploads/avater/20191205/fd0d5e930a783c62726077e25aae159b.jpg",
+      //   price: "12000",
 
-        title: "无锡***文化公司",
-        type: "展厅设计"
-      }
+      //   title: "无锡***文化公司",
+      //   type: "展厅设计"
+      // }
     ];
+     this.buyerpic = [
+       {
+         pic:"http://192.168.2.32/uploads/banner/20191211/1d075af442fbe2c169c447c1039ad3cd.jpg"
+       },
+       {
+         pic:"http://192.168.2.32/uploads/banner/20191211/a2d6ceb501677f78748004341a9267e6.jpg"
+       }
 
+     ]
     this.buyerList = [
       {
         id: 1,
@@ -276,9 +298,10 @@ export default {
   }
   .buyer_right {
     width: 380px;
+     height: 669px;
     background: #fff;
     .seamless-warp {
-      height: 569px;
+      height: 493px;
       overflow: hidden;
       .hot {
         display: flex;

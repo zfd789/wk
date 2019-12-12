@@ -24,7 +24,7 @@ module.exports = {
       port:8081,
       proxy:{
          '/apis':{
-            target:'http://192.168.2.32/',
+            target:'http://101.132.34.30/',
             changeOrigin: true,
             pathRewrite:{
                 '^/apis':''

@@ -6,7 +6,7 @@ import login from '@/views/login/login'
 import index from '@/views/index'
 import Shop from '@/views/Shop' // 店铺首页模块
 import Costomer from '@/views/Costomer' // 用户模块
-import home from '@/views/Shop/home' // 店铺首页模块
+// import home from '@/views/Shop/home' // 店铺首页模块
 
 import customer from '@/views/Customer/customer' // 店铺首页模块
 import mineshop from '@/views/Customer/mineshop'
@@ -16,7 +16,7 @@ import setting from '@/views/Customer/setting'
 // import phone from '@/views/Customer/settings/phone'
 // import findpwd from '@/views/Customer/settings/findpwd'
 
-import forum from '@/views/Forum/forum'
+// import forum from '@/views/Forum/forum'
 
 import shopslist from '@/views/Shopslist/shopslist'
 import Goodslist from '@/views/Shopslist/Goodslist'
@@ -50,20 +50,24 @@ const routes = [
     path: '/',
     name: 'index',
     component: index,
-    meta: {
-      requireAuth: false
-    },
+  
     children: [{
         path: '/menu/publish',
         // component: publish,
         component: () => import('@/views/menu/publish'),
-        name: "发布"
+        name: "发布",
+        meta: {
+          requireAuth: true
+        },
       },
       {
         path: '/menu/orderTaking',
         // component: orderTaking,
         component: () => import('@/views/menu/orderTaking'),
-        name: "我要接单"
+        name: "我要接单",
+        meta: {
+          requireAuth: true
+        },
       }
       // ,
       // {
@@ -80,7 +84,34 @@ const routes = [
     meta: {
       requireAuth: false
     },
-    // publishQuestions
+    // publishQuestions anser
+    children: [{
+        path: '/Designers/designerlist',
+        // component: forum,
+        component: () => import('@/views/Designers/designerlist'),
+        name: "设计师列表"
+      },
+      {
+        path: '/Designers/designerdet',
+        // component: forum,
+        component: () => import('@/views/Designers/designerdet'),
+        name: "设计师详情"
+      },
+      {
+        path: '/',
+        redirect: '/Designers/designerlist'
+      }
+    ],
+
+  },
+  {
+    path: '/',
+    name: 'index',
+    component: index,
+    meta: {
+      requireAuth: false
+    },
+    // publishQuestions anser
     children: [{
         path: '/Forum/forum',
         // component: forum,
@@ -94,8 +125,10 @@ const routes = [
         name: "发布问题"
       },
       {
-        path: '/',
-        redirect: '/Forum/forum'
+        path: '/Forum/anser',
+        // component: forum,
+        component: () => import('@/views/Forum/anser'),
+        name: "我要回答"
       }
     ],
 
@@ -156,12 +189,32 @@ const routes = [
     name: 'Shop',
     component: Shop,
     meta: {
-      requireAuth: true
+      requireAuth: false
     },
     children: [{
         path: '/Shop/home',
-        component: home,
+        component: () => import('@/views/Shop/home'),
         name: "店铺首页"
+      },
+      {
+        path: '/Shop/cases',
+        component: () => import('@/views/Shop/cases'),
+        name: "案例展示"
+      },
+      {
+        path: '/Shop/goodsCenter',
+        component: () => import('@/views/Shop/goodsCenter'),
+        name: "产品中心"
+      },
+      {
+        path: '/Shop/aboutUs',
+        component: () => import('@/views/Shop/aboutUs'),
+        name: "关于我们"
+      },
+      {
+        path: '/Shop/casedetail',
+        component: () => import('@/views/Shop/casedetail'),
+        name: "案例详情"
       },
       {
         path: '/',
@@ -186,6 +239,16 @@ const routes = [
             path: '/Customer/customers/profile',
             component: () => import('@/views/Customer/customers/profile'),
             name: "个人主页"
+          },
+          {
+            path: '/Customer/customers/ListQuotations',
+            component: () => import('@/views/Customer/customers/ListQuotations'),
+            name: "报价列表"
+          },
+          {
+            path: '/Customer/customers/ListQuotationsDetail',
+            component: () => import('@/views/Customer/customers/ListQuotationsDetail'),
+            name: "报价详情"
           },
           {
             path: '/Customer/customers/publishRquire',
@@ -228,6 +291,11 @@ const routes = [
             name: "商品管理"
           },
           {
+            path: '/Customer/mineshops/addGood',
+            component: () => import('@/views/Customer/mineshops/addGood'),
+            name: "添加商品"
+          },
+          {
             path: '/Customer/mineshops/fixtShop',
             component: () => import('@/views/Customer/mineshops/fixtShop'),
             name: "装修店铺"
@@ -236,7 +304,23 @@ const routes = [
             path: '/Customer/mineshops/caseManage',
             component: () => import('@/views/Customer/mineshops/caseManage'),
             name: "案例管理"
-          }, {
+          },
+          {
+            path: '/Customer/mineshops/addCase',
+            component: () => import('@/views/Customer/mineshops/addCase'),
+            name: "添加案例"
+          },
+          {
+            path: '/Customer/mineshops/priceListdetail',
+            component: () => import('@/views/Customer/mineshops/priceListdetail'),
+            name: "报价单详情"
+          },
+          {
+            path: '/Customer/mineshops/priceList',
+            component: () => import('@/views/Customer/mineshops/priceList'),
+            name: "我的报价单"
+          },
+          {
             path: '/Customer/mineshop',
             redirect: '/Customer/mineshops/shopBaseInfo'
           }

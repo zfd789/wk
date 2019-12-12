@@ -8,7 +8,7 @@
           <el-dropdown trigger="click">
             <span class="el-dropdown-link">
               <i class="el-icon-location-outline" style="color:red;"></i>
-              苏州
+              全国
               <i class="el-icon-caret-bottom el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
@@ -17,14 +17,16 @@
           </el-dropdown>
         </div>
         <div class="topfixd-r">
-          <!-- <p>请登录</p>
-          <p>免费注册</p>
-          <p>用户中心</p>
-          <p>帮助中心</p> -->
-          <router-link class="color_ju" to="/login">请登录</router-link>
-          <router-link class="color_ju" to="/login">免费注册</router-link>
-          <router-link to="/Customer/customer">用户中心</router-link>
+          <p @click="toLogin" >{{username || "登录"}}</p>
+          <p v-show="username==false" @click="register">免费注册</p>
+          <!-- 
+          <router-link class="color_ju" to="/login" >{{username || "登录"}}</router-link>
+          <router-link class="color_ju" to="/login">免费注册</router-link>-->
+          <!-- <router-link to="/Customer/customer">用户中心</router-link> -->
+          <p @click="Tocostomer">用户中心</p>
           <router-link to="/login">帮助中心</router-link>
+          <!-- <p >帮助中心</p> -->
+          <p @click="loginout">退出</p>
 
           <!-- 
           <el-dropdown tyonghurigger="hover">
@@ -63,31 +65,86 @@
 </template>
 
 <script>
-import API from '@/api/login'
+import API from "@/api/login";
 export default {
   name: "Topfixd",
   data() {
-    return {};
+    return {
+      username: "",
+      active:"active"
+    };
   },
-  methods:{
-    islogin(){
-      API.islogin().then(res=>{
-        if(res.code==0){
-          // 已登录
-          console.log(res)
-          localStorage.setItem('islogin',0)
-        } else {
-          // 未登录
-          console.log(res)
-           localStorage.setItem('islogin',1)
+  methods: {
+    register(){
+      this.$router.push({
+        path:"/login",
+        query:{
+          reg_id:1
         }
       })
     },
-
+    toLogin() {
+      if (this.username) {
+        this.$message({
+          message: '您已登录',
+          offset:50,
+          type: 'warning'
+        });
+      } else {
+        this.$router.push({
+          path: "/login"
+        });
+      }
+    },
+    Tocostomer() {
+      this.$router.push({
+        path: "/Customer/customer"
+      });
+    },
+    loginout() {
+      this.$confirm("是否确认退出登录", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(() => {
+          API.loginOut().then(res => {
+            console.log(res);
+            localStorage.removeItem("islogin");
+            localStorage.removeItem("username");
+            this.$router.push({
+              path:"/login"
+            })
+            // this.username = "登录"
+          });
+        })
+        .catch(() => {
+          // this.$message({
+          //   type: "info",
+          //   message: "已取消"
+          // });
+        });
+    },
+    islogin() {
+      API.islogin().then(res => {
+        if (res.code == 0) {
+          // 已登录
+          // console.log(res)
+          // localStorage.setItem('islogin',0)
+        } else {
+          // 未登录
+          // console.log(res)
+          //  localStorage.setItem('islogin',1)
+        }
+      });
+    }
   },
-  mounted(){
-    this.islogin()
-    // to.matched.some(res => res.meta.requireAuth) 
+  mounted() {
+    // this.islogin();
+    // localStorage.setItem("username", JSON.stringify(res.data));
+    this.username = JSON.parse(localStorage.getItem("username"));
+    console.log(this.username);
+    // to.matched.some(res => res.meta.requireAuth)
   }
 };
 </script>
@@ -124,13 +181,15 @@ export default {
       width: 50%;
       display: flex;
       justify-content: space-between;
-      a:hover{
-                color:  rgb(255, 154, 60);
-
+      .active{
+        display: block;
       }
-       .color_ju{
-        color:  rgb(255, 154, 60);
-       }
+      a:hover {
+        color: rgb(255, 154, 60);
+      }
+      .color_ju {
+        color: rgb(255, 154, 60);
+      }
       p {
         // width:100px;
         text-align: right;

@@ -23,7 +23,7 @@
     <!-- 表格 -->
     <div>
       <el-table :data="tableData" stripe border style="width: 100%">
-        <el-table-column  label="店铺头像" align="center">
+        <el-table-column label="店铺头像" align="center">
           <template slot-scope="scope">
             <img :src="scope.row.goods_imgs" class="avatar" style="width:50px;height:50px;" />
           </template>
@@ -34,7 +34,7 @@
         <el-table-column prop="name" label="收藏时间" sortable align="center"></el-table-column>
         <el-table-column label="操作" align="center" width="300px">
           <el-button size="small" type="primary" plain>查看</el-button>
-          <el-button size="small" type="warning" plain>取消收藏</el-button>
+          <el-button size="small" type="warning" plain @click="cancel">取消收藏</el-button>
         </el-table-column>
       </el-table>
     </div>
@@ -42,6 +42,8 @@
 </template>
 
 <script>
+import API from "@/api/customer";
+
 export default {
   data() {
     return {
@@ -73,8 +75,28 @@ export default {
     };
   },
   methods: {
-    goodsList() {},
+    List() {
+      let params = {
+        page: 1
+      };
+      API.myFollow(params).then(res => {
+        console.log(res);
+      });
+    },
+    // 取消收藏
+    cancel() {
+      let params = {
+        shop_id: 1, //店铺id
+        type: 2  // 1 关注 2 取消关注
+      };
+      API.shopFollow(params).then(res => {
+        console.log(res);
+      });
+    },
     addGoods() {}
+  },
+  mounted() {
+    this.List();
   }
 };
 </script>

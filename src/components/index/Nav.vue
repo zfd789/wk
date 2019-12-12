@@ -28,7 +28,7 @@
           </div>
           <div></div>
           <div class="or">或</div>
-          <div class="publish">免费发布</div>
+          <div class="publish" @click="Topublish">免费发布</div>
         </div>
         <div class="hot">
           <a href="#">展厅设计</a>
@@ -52,6 +52,13 @@ export default {
       input3: "",
       select: ""
     };
+  },
+  methods:{
+    Topublish(){
+      this.$router.push({
+        path:"/menu/publish"
+      })
+    }
   }
 };
 </script>

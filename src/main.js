@@ -23,21 +23,39 @@ router.beforeEach((to, from, next) => {
   // eslint-disable-next-line no-console
   to.matched.some(res => {
     // eslint-disable-next-line no-console
-    if (res.meta.requireAuth == true) {
+    if (res.meta.requireAuth) {
       let islogin = localStorage.getItem('islogin')
-       const redirect = decodeURIComponent(from.query.redirect || to.path)
-       // eslint-disable-next-line no-console
-       console.log(redirect)
-      if (islogin == 1) {
-        router.push({
-          path: "/login"
+
+      // eslint-disable-next-line no-console
+      // console.log(redirect)
+      if (islogin == 0) { // 已登录
+
+        // router.push({
+        //   path: "/login"
+        // })
+        // next({ path: redirect })
+        next()
+      } else { // 未登录
+        // next({ path: redirect })
+        // eslint-disable-next-line no-console
+
+        // this.$router.replace({
+        //   path: "/Shopslist/shopslist",
+        //   query: { info: children_1, list: children.children }
+        // });
+
+        // console.log(to.fullPath)
+        next({
+          path: "/login",
+          query: {
+            redirect: to.fullPath //把要跳转的路径作为参数传到登录页面
+          }
         })
-        next({ path: redirect })
       }
     } else {
       next()
     }
-   
+
 
   })
 

@@ -1,11 +1,9 @@
 <!--  -->
 <template>
-  <div>mineOrder</div>
+  <div>设计师详情页</div>
 </template>
 
 <script>
-import API from '@/api/customer'
-
 export default {
   data () {
     return {

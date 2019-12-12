@@ -29,7 +29,7 @@
         <el-table-column prop="name" label="任务金额" sortable align="center"></el-table-column>
         <el-table-column prop="name" label="任务状态"  align="center"></el-table-column>
         <el-table-column label="操作"  align="center" width="300px">
-          <el-button size="small" type="primary" plain>查看</el-button>
+          <el-button size="small" type="primary" plain @click="cheak">查看</el-button>
           <el-button size="small" type="success" plain>一键发布</el-button>
         </el-table-column>
       </el-table>
@@ -38,6 +38,8 @@
 </template>
 
 <script>
+import API from '@/api/customer'
+
 export default {
   data() {
     return {
@@ -69,8 +71,24 @@ export default {
     };
   },
   methods: {
-    goodsList() {},
+    cheak(){
+      this.$router.push({
+        path:"/Customer/customers/ListQuotations"
+      })
+    },
+    requirelist() {
+      let params = {
+        page:1,
+        is_checked:1 // 1 通过  2 未通过 3 未审核
+      }
+      API.myOrder(params).then(res=>{
+        console.log(res)
+      })
+    },
     addGoods() {}
+  },
+  mounted(){
+    this.requirelist()
   }
 };
 </script>

@@ -219,6 +219,7 @@ export default {
   .content {
     display: flex;
     background: #fff;
+    justify-content: flex-start;
     width: 100%;
     height: 70px;
     line-height: 70px;

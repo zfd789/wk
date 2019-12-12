@@ -159,7 +159,12 @@ export default {
       rulestype: 1, // 1是登录的验证规则 2 注册的验证规则 3
       iscode: "", // prop 是否需要code
       loginbtn: "登录",
+      reg_id:"", // topfix的注册
       isshowTitle: 1, // 1 显示登录注册 标题 2 显示找回密码标题
+      registForm: {
+        mobile_email: "18260771127",
+        password: "123456"
+      },
       rulefindpwd: {
         mobile_email: [
           {
@@ -201,7 +206,7 @@ export default {
         ],
         name: [
           { required: true, message: "请输入用户名", trigger: "blur" },
-          { min: 3, max: 5, message: "长度在 3 到 5 个字符", trigger: "blur" }
+          { min: 3, max: 12, message: "长度在 3 到 12 个字符", trigger: "blur" }
         ],
         captcha: [
           { required: true, message: "请输入图片验证码", trigger: "blur" }
@@ -285,14 +290,17 @@ export default {
         //  注册成功
         this.$message({
           type: "success",
+          offset: 50,
           message: res.msg
         });
         if (this.logintype == 1) {
-          // localStorage.setItem('ISLogin',JSON.stringify)
-          this.$router.push({
-            path:'/'
-          })
+          localStorage.setItem("islogin", 0);
+          localStorage.setItem("username", JSON.stringify(res.data));
 
+          let redirect = this.$route.query.redirect || '/' ; // 获得路由携带的参数
+          this.$router.push({
+            path: redirect
+          });
         } else {
           this.logintabs(res);
         }
@@ -306,10 +314,10 @@ export default {
     //  注册的动作
     sendcode() {
       this.time = 60;
-     this.$message({
-       type:"warning",
-       message:"验证码将在5分钟后过期"
-     })
+      this.$message({
+        type: "warning",
+        message: "验证码将在5分钟后过期"
+      });
       if (this.code_true == 1) {
         //  如果手机号码验证正确 可发送验证码
 
@@ -408,6 +416,14 @@ export default {
   },
   mounted() {
     this.getcaptcha();
+    this.reg_id = this.$route.query.reg_id
+    console.log(this.reg_id)
+    if(this.reg_id){
+      this.registertabs()
+    }
+    // let redirect = decodeURIComponent(this.$router.query.redirect || '/') // 获得路由携带的参数
+    // console.log(decodeURIComponent(this.$router))
+    // console.log(this.$router)
   }
 };
 </script>

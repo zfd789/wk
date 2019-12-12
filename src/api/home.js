@@ -9,7 +9,16 @@ export default {
     bannerlist:params=>{
         return API.GET('api/bannerList', params)
     },
-       islogin:params=>{
-        return API.GET('api/is_login',params)
+    // 首页数据
+    record:params=>{
+        return API.GET('api/record',params)
     },
+    //  设计师
+    designers:params=>{
+        return API.GET('api/designer_list',params)
+    }
+    //    islogin:params=>{
+    //     return API.GET('api/is_login',params)
+    // },
+
 }

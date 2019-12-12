@@ -23,7 +23,7 @@
       <img src="../../assets/images/anli2.jpg" alt />
     </div>
     <div class="wid-w1240 color_bac goods">
-      <h1>所有商品</h1>
+      <h1>推荐商品</h1>
       <div class="allgoods">
         <div class="left">
           <div v-for="(item, index) in props1" :key="index" class="list">
@@ -64,6 +64,7 @@
 
 <script>
 import Shop from "@/components/Shopslist/shop";
+import API from "@/api/shop";
 
 export default {
   components: {
@@ -76,6 +77,18 @@ export default {
     };
   },
   methods: {
+    // 获取推荐商品列表
+    Allgoods() {
+      let params = {
+        id: 2, // 店铺id  只要传店铺id可以自动匹配 是服务还是硬件
+        param: {
+          page: 1
+        }
+      };
+      API.Allgoods(params).then(res => {
+        console.log(res);
+      });
+    },
     getGoodsid(id) {
       console.log(id);
       console.log(this.class_type);
@@ -88,6 +101,7 @@ export default {
     }
   },
   mounted() {
+    this.Allgoods()
     this.shopBanners = [
       {
         url:

@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import API from '@/api/customer'
+
 export default {
   data() {
     return {
@@ -70,8 +72,15 @@ export default {
     };
   },
   methods: {
-    goodsList() {},
+    collectRequire() {
+     API.myFollowOrder().then(res=>{
+       console.log(res)
+     })
+    },
     addGoods() {}
+  },
+  mounted(){
+    this.collectRequire()
   }
 };
 </script>

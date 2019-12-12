@@ -1,6 +1,8 @@
 <!--  -->
 <template>
-  <div>mineOrder</div>
+  <div>wode我的报价单
+      <router-link to="/Customer/mineshops/priceListdetail">报价单详情</router-link>
+  </div>
 </template>
 
 <script>

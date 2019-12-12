@@ -11,6 +11,7 @@
           <el-menu-item index="/Customer/mineshops/goodsManage">商品管理</el-menu-item>
           <el-menu-item index="/Customer/mineshops/fixtShop">装修店铺</el-menu-item>
           <el-menu-item index="/Customer/mineshops/caseManage">案例管理</el-menu-item>
+          <el-menu-item index="/Customer/mineshops/priceList">我的报价单</el-menu-item>
         </el-menu>
         <div class="proposal">
           <p>意见反馈</p>

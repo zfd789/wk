@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <div>mineOrder</div>
+  <div>addcase</div>
 </template>
 
 <script>

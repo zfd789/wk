@@ -27,16 +27,18 @@
         <el-table-column prop="name" label="商品分类" align="center"></el-table-column>
         <el-table-column prop="name" label="状态" align="center"></el-table-column>
         <el-table-column label="操作" sortable align="center" width="300px">
-          <el-button size="small" type="info" plain>下架</el-button>
+          <el-button size="small" type="info" plain @click="Shelf">下架</el-button>
           <el-button size="small" type="primary" plain>编辑</el-button>
-          <el-button size="small" type="danger" plain>删除</el-button>
+          <el-button size="small" type="danger" plain @click="del">删除</el-button>
         </el-table-column>
       </el-table>
     </div>
   </div>
 </template>
-
+ 
 <script>
+import API from "@/api/customer";
+
 export default {
   data() {
     return {
@@ -68,8 +70,43 @@ export default {
     };
   },
   methods: {
-    goodsList() {},
-    addGoods() {}
+    goodsList() {
+      let params = {
+        page: 1
+      };
+      API.myGoods(params).then(res => {
+        console.log(res);
+      });
+    },
+    // 删除
+    del() {
+      let params = {
+        id:1
+      }
+      API.delGoods(params).then(res => {
+        console.log(res);
+      });
+    },
+    // 商品上下架
+    Shelf(){
+      let params = {
+        id:1,
+        param:{
+          lower_shelf:1 // 1是上架  2是下架
+        }
+      }
+      API.changeShelf(params).then(res=>{
+        console.log(res)
+      })
+    },
+    addGoods() {
+      this.$router.push({
+        path: "/Customer/mineshops/addGood"
+      });
+    }
+  },
+  mounted() {
+    this.goodsList();
   }
 };
 </script>
