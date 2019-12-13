@@ -212,7 +212,7 @@ export default {
     display: flex;
     justify-content: space-between;
     .left {
-      width: 80%;
+      width: 100%;
       display: flex;
       flex-wrap: wrap;
       .list {
@@ -237,10 +237,11 @@ export default {
       }
     }
     .right {
-      width: 19%;
+      width: 220px;
       background: #fff;
+      margin-left: 20px;
       img {
-        width: 231px;
+        width: 220px;
         display: block;
         margin: 0 auto;
       }

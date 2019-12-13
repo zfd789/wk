@@ -193,6 +193,7 @@ export default {
         background: #f8f8f8;
         height: 70px;
         line-height: 70px;
+        text-align: center;
         h3 {
           width: 107px;
           font-size: 16px;

@@ -16,6 +16,10 @@ export default {
     //  设计师
     designers:params=>{
         return API.GET('api/designer_list',params)
+    },
+     //  设计师
+     designersdet:params=>{
+        return API.GET(`api/designer_info/${params.id}`)
     }
     //    islogin:params=>{
     //     return API.GET('api/is_login',params)

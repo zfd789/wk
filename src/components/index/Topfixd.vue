@@ -17,7 +17,7 @@
           </el-dropdown>
         </div>
         <div class="topfixd-r">
-          <p @click="toLogin" >{{username || "登录"}}</p>
+          <p @click="toLogin">{{username || "登录"}}</p>
           <p v-show="username==false" @click="register">免费注册</p>
           <!-- 
           <router-link class="color_ju" to="/login" >{{username || "登录"}}</router-link>
@@ -25,6 +25,7 @@
           <!-- <router-link to="/Customer/customer">用户中心</router-link> -->
           <p @click="Tocostomer">用户中心</p>
           <router-link to="/login">帮助中心</router-link>
+          <p @click="shop">开通店铺</p>
           <!-- <p >帮助中心</p> -->
           <p @click="loginout">退出</p>
 
@@ -70,25 +71,46 @@ export default {
   name: "Topfixd",
   data() {
     return {
+      isreverse: 2, // 已认证  2 未认证
       username: "",
-      active:"active"
+      active: "active"
     };
   },
   methods: {
-    register(){
-      this.$router.push({
-        path:"/login",
-        query:{
-          reg_id:1
-        }
+    // 开通店铺
+    // isreverse 1// 已认证  2 未认证
+
+    shop() {
+      console.log(this.isreverse);
+      if (this.isreverse == 1) {
+        this.$router.push({
+          path: "/Customer/openShop"
+        });
+      } else {
+        this.$message({
+          type:'warning',
+          offset:50,
+          message:"请先实名认证"
+        })
+        this.$router.push({
+        path:"/Customer/settings/reverse"
       })
+      }
+    },
+    register() {
+      this.$router.push({
+        path: "/login",
+        query: {
+          reg_id: 1
+        }
+      });
     },
     toLogin() {
       if (this.username) {
         this.$message({
-          message: '您已登录',
-          offset:50,
-          type: 'warning'
+          message: "您已登录",
+          offset: 50,
+          type: "warning"
         });
       } else {
         this.$router.push({
@@ -113,8 +135,8 @@ export default {
             localStorage.removeItem("islogin");
             localStorage.removeItem("username");
             this.$router.push({
-              path:"/login"
-            })
+              path: "/login"
+            });
             // this.username = "登录"
           });
         })
@@ -142,6 +164,7 @@ export default {
   mounted() {
     // this.islogin();
     // localStorage.setItem("username", JSON.stringify(res.data));
+    console.log(this.isreverse);
     this.username = JSON.parse(localStorage.getItem("username"));
     console.log(this.username);
     // to.matched.some(res => res.meta.requireAuth)
@@ -181,7 +204,7 @@ export default {
       width: 50%;
       display: flex;
       justify-content: space-between;
-      .active{
+      .active {
         display: block;
       }
       a:hover {

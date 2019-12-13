@@ -11,6 +11,7 @@ import Costomer from '@/views/Costomer' // 用户模块
 import customer from '@/views/Customer/customer' // 店铺首页模块
 import mineshop from '@/views/Customer/mineshop'
 import setting from '@/views/Customer/setting'
+import openShop from '@/views/Customer/openShop'
 // import baseInfo from '@/views/Customer/settings/baseInfo' 
 // import email from '@/views/Customer/settings/email'
 // import phone from '@/views/Customer/settings/phone'
@@ -328,6 +329,14 @@ const routes = [
 
 
         ]
+      },
+      {
+       path:"/Customer/openShop",
+       component:openShop,
+       name:"开通店铺",
+       meta:{
+         requireAuth:true
+       }
       },
       {
         path: '/Customer/setting',

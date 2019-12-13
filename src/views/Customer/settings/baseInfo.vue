@@ -12,29 +12,29 @@
         <el-radio v-model="formData.name" label="1">男</el-radio>
         <el-radio v-model="formData.name" label="2">女</el-radio>
       </el-form-item>
-      <el-form-item label="企业名称：" label-width="100px">
+      <!-- <el-form-item label="企业名称：" label-width="100px">
         <el-input v-model="formData.name" style="width:200px;"></el-input>
-      </el-form-item>
+      </el-form-item> -->
 
       <el-form-item label="手机号码：" label-width="100px">
-        <el-input v-model="formData.name" style="width:200px;"></el-input>
+        <el-input v-model="formData.mobile" style="width:200px;"></el-input>
       </el-form-item>
 
       <el-form-item label="电子邮箱：" label-width="100px">
-        <el-input v-model="formData.name" style="width:200px;"></el-input>
+        <el-input v-model="formData.email" style="width:200px;"></el-input>
       </el-form-item>
       <el-form-item label="所在地区：" label-width="100px">
         <CityPicker></CityPicker>
       </el-form-item>
       <el-form-item label="详细地址：" label-width="100px">
-        <el-input v-model="formData.name" style="width:550px;"></el-input>
+        <el-input v-model="formData.address" style="width:550px;"></el-input>
       </el-form-item>
       <el-form-item label="个人简介：" label-width="100px">
         <!-- <el-input v-model="formData.name"></el-input> -->
         <el-input
           type="textarea"
           placeholder="请输入内容"
-          v-model="formData.name"
+          v-model="formData.introduction"
           maxlength="60"
           show-word-limit
           style="width:550px;"
@@ -47,6 +47,7 @@
 
 <script>
 import CityPicker from "@/components/Shopslist/cityPicker";
+import API from '@/api/customer'
 
 export default {
     components:{
@@ -58,6 +59,19 @@ export default {
              name:""
          }
     };
+  },
+  methods:{
+    
+
+    baseInfo(){
+      API.UserInfo().then(res=>{
+        this.formData = res.data
+        console.log(res)
+      })
+    }
+  },
+  mounted(){
+    this.baseInfo()
   }
 };
 </script>

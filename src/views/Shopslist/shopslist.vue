@@ -216,8 +216,8 @@ export default {
         display: flex;
         flex-wrap: wrap;
         .list {
-          width: 24%;
-          margin: 10px 10px 10px 0px;
+          width: 220px;
+          margin: 10px 27px 10px 0px;
         }
       }
 
@@ -231,6 +231,7 @@ export default {
         background: #f8f8f8;
         height: 70px;
         line-height: 70px;
+        text-align: center;
         h3 {
           // width: 107px;
           font-size: 16px;

@@ -86,8 +86,14 @@ export default {
     // 账号设置
      
     // 基本设置
-
+    // 发送认证验证码
+    sendmail:params=>{
+        return API.GET('user/send_mail',params)
+    },
     // 邮箱认证
+    cheakEmail:params=>{
+        return API.POST('api/user/check_email',params)
+    }
     // 手机认证
     // 实名认证
     // 修改密码

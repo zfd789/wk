@@ -43,7 +43,7 @@
             <span>已通过真实姓名认证</span>
           </p>
           <div class="button">
-            <el-button type="danger" plain>查看店铺</el-button>
+            <el-button type="danger" plain @click="toshop">查看店铺</el-button>
           </div>
         </div>
         <!-- shop  @todetail="getGoodsid" -->
@@ -88,6 +88,12 @@ export default {
     };
   },
   methods: {
+    // 查看店铺
+    toshop(){
+      this.$router.push({
+        path:"/Shop/home"
+      })
+    },
     // 区 去询价
     toOrder(){
       console.log('----------------')

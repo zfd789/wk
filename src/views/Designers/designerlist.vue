@@ -21,11 +21,15 @@
       </div>
       <!-- 表格 -->
       <ul class="wrap">
-
-        <li >
-          <Designer></Designer>
+        <li class="list">
+          <Designer
+            :props="item"
+            v-for="(item,index) in props"
+            :key="index"
+            class="item"
+            
+          ></Designer>
         </li>
-
       </ul>
     </div>
   </div>
@@ -34,7 +38,7 @@
 <script>
 import CityPicker from "@/components/Shopslist/cityPicker";
 import Designer from "@/components/index/Designer.vue";
-
+import API from "@/api/home";
 export default {
   components: {
     CityPicker,
@@ -43,19 +47,32 @@ export default {
   data() {
     return {
       list: [],
+      props: [],
       orderlist: [],
-      designer:[]
+      designer: []
     };
   },
   methods: {
-    changename({ row, column, rowIndex, columnIndex }) {
-      console.log(columnIndex);
-      if ((columnIndex = 1)) {
-        return "red";
-      }
+    // changename({ row, column, rowIndex, columnIndex }) {
+    //   console.log(columnIndex);
+    //   if ((columnIndex = 1)) {
+    //     return "red";
+    //   }
+    // }
+    // 详情页
+    detail() {
+      this.$router.push({
+        path: "/Designers/designerdet"
+      });
+    },
+    designers() {
+      API.designers().then(res => {
+        console.log(res);
+      });
     }
   },
   mounted() {
+    // this.designers()
     this.list = [
       {
         label: "擅长领域",
@@ -101,36 +118,42 @@ export default {
         ]
       }
     ];
-     this.designer = [
+    this.props = [
       {
-        pic:
+        designer_img:
           "http://192.168.2.32/uploads/designer/20191205/f7542df6ac6dc972019db62a4341ce7c.jpg",
-        title: "苏州耐斯特展览有限公司",
-        name: "设计师姓名"
+        shop_name: "苏州耐斯特展览有限公司",
+        designer_name: "设计师姓名"
       },
       {
-        pic:
+        designer_img:
           "http://192.168.2.32/uploads/designer/20191205/f7542df6ac6dc972019db62a4341ce7c.jpg",
-        title: "苏州耐斯特展览有限公司",
-        name: "设计师姓名"
+        shop_name: "苏州耐斯特展览有限公司",
+        designer_name: "设计师姓名"
       },
       {
-        pic:
+        designer_img:
           "http://192.168.2.32/uploads/designer/20191205/f7542df6ac6dc972019db62a4341ce7c.jpg",
-        title: "苏州耐斯特展览有限公司",
-        name: "设计师姓名"
+        shop_name: "苏州耐斯特展览有限公司",
+        designer_name: "设计师姓名"
       },
       {
-        pic:
+        designer_img:
           "http://192.168.2.32/uploads/designer/20191205/f7542df6ac6dc972019db62a4341ce7c.jpg",
-        title: "苏州耐斯特展览有限公司",
-        name: "设计师姓名"
+        shop_name: "苏州耐斯特展览有限公司",
+        designer_name: "设计师姓名"
       },
       {
-        pic:
+        designer_img:
           "http://192.168.2.32/uploads/designer/20191205/f7542df6ac6dc972019db62a4341ce7c.jpg",
-        title: "苏州耐斯特展览有限公司",
-        name: "设计师姓名"
+        shop_name: "苏州耐斯特展览有限公司",
+        designer_name: "设计师姓名"
+      },
+      {
+        designer_img:
+          "http://192.168.2.32/uploads/designer/20191205/f7542df6ac6dc972019db62a4341ce7c.jpg",
+        shop_name: "苏州耐斯特展览有限公司",
+        designer_name: "设计师姓名"
       }
     ];
   }
@@ -139,11 +162,22 @@ export default {
 <style lang='scss' scoped>
 .wrap {
   display: flex;
+
   //   align-items: center;
   font-size: 14px;
   margin: 1px;
   //   background: pink;
   justify-content: space-between;
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    // align-items: center;
+    justify-content: space-between;
+    .item {
+      margin: 10px 0px;
+    }
+  }
   .lable {
     width: 107px;
     background: #f8f8f8;

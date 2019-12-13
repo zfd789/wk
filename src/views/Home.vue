@@ -131,19 +131,19 @@ export default {
     this.caselist = [
       {
         pic:
-          "http://192.168.2.32/uploads/designer/20191205/7fa9111cedaf722755ce71cf27b7f24f.jpg"
+          "http://192.168.2.32/uploads/banner/20191213/8a32893b35080d5c7a4fb150623e4598.jpg"
       },
       {
         pic:
-          "http://192.168.2.32/uploads/designer/20191205/7fa9111cedaf722755ce71cf27b7f24f.jpg"
+          "http://192.168.2.32/uploads/banner/20191213/8a32893b35080d5c7a4fb150623e4598.jpg"
       },
       {
         pic:
-          "http://192.168.2.32/uploads/designer/20191205/7fa9111cedaf722755ce71cf27b7f24f.jpg"
+          "http://192.168.2.32/uploads/banner/20191213/8a32893b35080d5c7a4fb150623e4598.jpg"
       },
       {
         pic:
-          "http://192.168.2.32/uploads/designer/20191205/7fa9111cedaf722755ce71cf27b7f24f.jpg"
+          "http://192.168.2.32/uploads/banner/20191213/8a32893b35080d5c7a4fb150623e4598.jpg"
       },
       {
         pic:
