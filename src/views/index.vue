@@ -3,6 +3,7 @@
   <div class="index-con">
     <Header></Header>
     <Menu></Menu>
+   <!-- <Breadcrumd></Breadcrumd> -->
     <router-view></router-view>
     <Footer></Footer>
   </div>
@@ -12,12 +13,14 @@
 import Footer from "@/public/Footer";
 import Header from '@/public/Header';
 import Menu from '@/components/index/menu'
+import Breadcrumd from '@/components/index/Breadcrumd'
 
 export default {
   components: {
     Footer,
     Header,
-    Menu
+    Menu,
+    Breadcrumd
   },
   data() {
     return {};

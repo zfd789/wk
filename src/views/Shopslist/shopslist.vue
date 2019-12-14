@@ -164,7 +164,8 @@ export default {
   },
   mounted() {
     this.Shoplist();
-    this.list = this.$route.query.list;
+    // this.list = this.$route.query.list;
+    this.list = JSON.parse(this.$route.query.list)
     this.class_type = this.$route.query.info.class_type;
     console.log(this.class_type);
     // this.brand();

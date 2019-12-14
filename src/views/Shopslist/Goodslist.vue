@@ -151,7 +151,8 @@ export default {
   },
   mounted() {
     this.Goodslist();
-    this.list = this.$route.query.list;
+    this.list = JSON.parse(this.$route.query.list)
+    console.log(this.list)
     this.props1 = [
       {
         goods_imgs:

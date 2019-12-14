@@ -25,9 +25,9 @@
     <div>
       <el-table :data="tableData" stripe border style="width: 100%">
         <el-table-column prop="name" label="订单编号" align="center"></el-table-column>
-        <el-table-column prop="name" label="标题" align="center"></el-table-column>
-        <el-table-column prop="name" label="任务金额" sortable align="center"></el-table-column>
-        <el-table-column prop="name" label="任务状态"  align="center"></el-table-column>
+        <el-table-column prop="title" label="标题" align="center"></el-table-column>
+        <el-table-column prop="budget_min_price" label="任务金额" sortable align="center"></el-table-column>
+        <el-table-column prop="is_checked" label="任务状态"  align="center"></el-table-column>
         <el-table-column label="操作"  align="center" width="300px">
           <el-button size="small" type="primary" plain @click="cheak">查看</el-button>
           <el-button size="small" type="success" plain>一键发布</el-button>
@@ -43,28 +43,29 @@ import API from '@/api/customer'
 export default {
   data() {
     return {
-      tableData: [
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄"
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        }
-      ],
+      tableData:[],
+      // tableData: [
+      //   {
+      //     date: "2016-05-02",
+      //     name: "王小虎",
+      //     address: "上海市普陀区金沙江路 1518 弄"
+      //   },
+      //   {
+      //     date: "2016-05-04",
+      //     name: "王小虎",
+      //     address: "上海市普陀区金沙江路 1517 弄"
+      //   },
+      //   {
+      //     date: "2016-05-01",
+      //     name: "王小虎",
+      //     address: "上海市普陀区金沙江路 1519 弄"
+      //   },
+      //   {
+      //     date: "2016-05-03",
+      //     name: "王小虎",
+      //     address: "上海市普陀区金沙江路 1516 弄"
+      //   }
+      // ],
       Query: {
         goods_name: ""
       }
@@ -82,6 +83,7 @@ export default {
         is_checked:1 // 1 通过  2 未通过 3 未审核
       }
       API.myOrder(params).then(res=>{
+        this.tableData = res.data.list
         console.log(res)
       })
     },

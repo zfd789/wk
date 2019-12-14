@@ -65,13 +65,11 @@ export default {
   },
   methods: {
     topublish() {
-      console.log('-------------11111111111111----------')
      this.$router.push({
           path: "/menu/publish"
         });
     },
       ordertaking() {
-      console.log('-------------11111111111111----------')
      this.$router.push({
           path: "/menu/orderTaking"
         });
@@ -85,12 +83,12 @@ export default {
       if (this.class_type === 1) {
         this.$router.replace({
           path: "/Shopslist/Goodslist",
-          query: { id: children_1.id, list: children.children }
+          query: { id: children_1.id, list: JSON.stringify(children.children) }
         });
       } else if (this.class_type === 2) {
         this.$router.replace({
           path: "/Shopslist/shopslist",
-          query: { info: children_1, list: children.children }
+          query: { info: children_1, list:JSON.stringify(children.children) }
         });
       }
     },
