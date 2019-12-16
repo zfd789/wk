@@ -10,7 +10,7 @@
         </div>
         <div class="superlier_right" v-for="tern in item.children" :key="tern.id">
           <h2></h2>
-          <div class="content" >
+          <div class="content" v-show="tern.shop_pic == tern.shop_pic">
             <!-- <img src="../../assets/images/home/banner0.jpg" alt /> -->
 
             <p>{{tern.title}}</p>
@@ -24,12 +24,11 @@
               </div>
             </div>
           </div>
-          <div class="business_logo">
-            <!-- <p></p> -->
-            <!-- <img src="../../assets/images/home/business.jpg" alt />
-            <img src="../../assets/images/home/business.jpg" alt />
-            <img src="../../assets/images/home/business.jpg" alt />
-            <img src="../../assets/images/home/business.jpg" alt />-->
+        </div>
+        <div v-for="(tt,index) in item.shop_pics" :key="index">
+          <div class="business_logo" >
+            <!-- <p>{{aa.pic}} ----------</p> -->
+            {{tt}}
           </div>
         </div>
       </div>
@@ -121,6 +120,7 @@ export default {
   data() {
     return {
       high_supplier: []
+      // shop_pics:[]
     };
   },
   mounted() {
@@ -129,6 +129,20 @@ export default {
         id: 1,
         class_name: "设计服务",
         describe: "设计服务设计服务设计服务设计服务",
+        shop_pics: [
+          {
+            pic: "11"
+          },
+          {
+            pic: "22"
+          },
+          {
+            pic: "33"
+          },
+          {
+            pic: "44"
+          }
+        ],
         children: [
           {
             id: 8,
@@ -309,11 +323,12 @@ export default {
       .business_logo {
         display: flex;
         justify-content: space-around;
-        img {
-          display: block;
-          width: 80px;
-          height: 80px;
-        }
+        color: #333;
+        // img {
+        //   display: block;
+        //   width: 80px;
+        //   height: 80px;
+        // }
       }
     }
   }

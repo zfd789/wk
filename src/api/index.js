@@ -19,7 +19,7 @@ axios.defaults.withCredentials = true
 
 // axios.interceptors.response.use(function (response) {
 //   // eslint-disable-next-line no-console
-//   console.log(response)
+//   console.log( response)
 //   if (response.data && response.data.code) {
 
 //     if (response.data.code === 0) {
@@ -45,6 +45,12 @@ axios.defaults.withCredentials = true
 //       //   }
 //       // })
 
+//     } else if (response.data.code === 4443) {
+//       // eslint-disable-next-line no-console
+//       console.log('-----------222222222')
+//       this.$router.push({
+//         path:"/login"
+//       })
 //     }
 //   }
 //   return response
